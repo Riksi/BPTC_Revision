@@ -1,0 +1,44 @@
+<html>
+	<form id = 'thisform' method = 'post' action = '{% url 'testpost' %}'>
+		{% csrf_token %}
+		<input class = 'test_input' name = 'test' type = 'text' id = 'test'>
+		<input class = 'test_input' name = 'test1' type = 'hidden' value = 'test1'>
+		<input class = 'test_input' name = 'test2' type = 'hidden' value = 'test2'>
+		<input class = 'test_input2' name = 'test_i_2' type = 'hidden' value = 'test2'>
+		<input type = 'submit' value = 'Send'>
+	</form>
+	<script type="text/javascript">
+	document.getElementById('thisform').addEventListener('submit',
+		function(e){
+			e.preventDefault();
+			postFunction();
+		})
+	
+	function postFunction() {
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (xhttp.readyState == 4 && xhttp.status == 200) {
+		      console.log(xhttp.responseText);
+		    }
+		  };
+		  xhttp.open("POST", '{% url 'testpost' %}', true);
+		  var csrf = document.getElementsByTagName('input')[0].value;
+		  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		  xhttp.send(getPostData(['test_input','test_input2']));
+		  console.log('sent');
+		}
+
+	function getPostData(classNames){
+		var postData = 'csrfmiddlewaretoken={{csrf_token}}'
+		classNames.forEach(function(cl){
+		var elems = document.getElementsByClassName(cl);
+		for(var i = 0; i < elems.length; i++){
+			var el = elems[i]
+			postData+='&'+ el.name + '=' + el.value;
+		};
+	});
+		return postData;
+	}
+
+	</script>
+</html>

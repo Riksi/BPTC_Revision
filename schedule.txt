@@ -1,0 +1,4 @@
+Schedule for website
+>20th-21st - Questions, Test yourself, Forum
+>22nd-23rd - User authentication, Deploy
+>24rd-25th - Forum

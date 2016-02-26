@@ -1,0 +1,38 @@
+{% extends 'courses\main_base.html' %}
+{% load staticfiles %}
+	{% block style2 %}
+		<!--link rel="stylesheet" href="{% static 'css/progress.css' %}"-->
+		<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+		<link rel="stylesheet" href="{% static 'css/logreg.css' %}">
+	{% endblock %}
+{% block content %}
+
+
+
+			<section class = 'profile-content main-content row logreg'>
+				<div class = 'profile'>
+					<h2>Register</h2>
+
+					<form method = 'post'>
+						{% csrf_token %}
+						<ul>
+							<li class = 'row'>
+							<label>Email:</label>
+							{{ form.username}}
+							</li>
+							<span class = 'error'>{{ form.username.errors }}</span>
+							<li class = 'row'>
+							<label>Password:</label>
+							{{ form.password}}
+							</li>
+							<span class = 'error'>{{ form.password.errors}}</span>
+							<li class = 'change-pword row'><input type = 'submit' value = 'Register'></li>
+						</ul>
+						<input type="hidden" name="next" value={{next}} />
+					</form>
+				</div>
+				<p> Already registered? <a href = {% url 'login' %}>Login</a><p>
+							<!--button type='button' class = "form-button media-button">GOOGLE</button>
+		<button type='button' class = "form-button media-button">FACEBOOK</button-->
+			</section>
+{% endblock %}

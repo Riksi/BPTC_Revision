@@ -1,0 +1,14 @@
+@media only screen and (min-width: 768px){
+.header-inner{
+		padding-left:0;
+		width: 80%;
+
+	}
+
+
+
+.user-menu-elem{
+	display: block;
+}
+
+}

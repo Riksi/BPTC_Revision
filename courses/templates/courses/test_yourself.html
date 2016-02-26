@@ -1,0 +1,49 @@
+{% extends 'courses/base.html' %}
+{% block content %}
+<form>
+	<select name = 'module_no'>
+			<option value = ''>Module</option>
+		{% for module in modules %}
+			<option value = {{module.module_no}} 
+			{% if  module.module_no == this_module_no %}
+			selected 
+			{% endif %}}>
+				Module {{module.module_no}}
+			</option>
+		{% endfor %}	
+	</select>
+	<select name = 'num_req'>
+		<option value = 10>Number of questions </option>
+		<option value = 5 {% if num_req == 5 %}
+		selected 
+		{% endif %} >5
+		</option>
+		<option value = 10 {% if num_req == 10 %}
+		selected 
+		{% endif %} >10
+		</option>
+	</select>
+	<input type = 'submit' value = 'New test'>
+</form>
+
+
+<section>
+	{% if questions %}
+	<ol>
+	{% for question in questions %}
+		<li id = 'question-{{question.id}}'>
+			<article>
+				<p> {{question.question}} </p>
+				<button class = 'above show-answer-{{question.id}} below-hidden'> 
+					<span class = 'show-text'>Show </span>
+					<span class = 'hide-text'>Hide </span>
+					answer
+				</button>
+				<p  id ='answer-{{question.id}}' class ='hidden'> {{question.answer}} </p>
+			</article>
+		</li>
+	{% endfor %}
+	</ol>
+	{% endif %}
+</section>
+{% endblock %}

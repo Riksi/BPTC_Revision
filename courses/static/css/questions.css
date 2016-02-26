@@ -1,0 +1,371 @@
+
+
+
+
+
+.show-text{
+	display: none;
+}
+
+.below-hidden .show-text{
+	display: inline;
+}
+
+.below-hidden .hide-text{
+	display: none;
+}
+
+button, .question-button{
+	cursor: pointer;
+}
+
+.questions{
+	padding: 20px 40px;
+	float: none;
+}
+
+.questions h6{
+	border-bottom: 1px solid #d0d0d0;
+	font-size: 16px;
+	color: #9A8F8F;
+	margin: 0;
+	padding: 10px 0 20px;
+	font-weight: lighter;
+}
+
+.questions h3{
+	margin-top :50px;
+	font-size: 18px;
+	line-height: 18px;
+}
+
+.questions h4{
+	margin: 50px 0 20px;
+}
+
+.questions ol{
+	padding-left: 25px;
+}
+
+.question-button, select{
+	padding: 8px 5px;
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.question-button{
+	margin: 25px 5px 0 5px;
+	float: right;
+	border: none;
+
+}
+
+.question-button{
+	background-color: #17C9EF;
+	color: #ffffff;
+}
+
+
+a .question-button{
+	background-color: #3363B5;
+	color: #ffffff;
+}
+
+.module-tabs .question-button{
+	float: none;
+}
+
+.module-tabs h5{
+	text-align: center;
+	margin: 10px;
+}
+
+form .question-button, select{
+	margin: 10px 5px;
+	float: none;
+	border-radius: 15px;
+}
+
+#new-test{
+ background-color: #ff0000;
+}
+
+#weak-areas{
+ background-color: #00ff00;
+}
+
+form{
+	text-align: center;
+}
+
+select{
+
+}
+
+.flag svg,.unflag svg{
+	width: 120%;
+	height: 120%;
+	fill: #a6a6a6;
+}
+
+
+.unflag svg{
+	fill:#ff0000;
+}
+
+.flag,.unflag {
+	height: 20px;
+	width: 20px;
+	float: right;
+	margin-right: 8px;
+	border-radius: 100%;
+	padding: 2px;
+}
+
+.flag-hover{
+	background-color: #d0d0d0;
+
+}
+
+
+[class*= 'show-answer-']{
+	background-color: #0000ff;
+	color: #ffffff;
+	font-weight: bold;
+	border-radius: 5px;
+	padding: 5px;
+	border: 1px solid #d0d0d0;
+	border-bottom-color: #000000;
+	border-right-color: #000000;
+}
+
+[id*= 'answer-']{
+	padding: 5px;
+	border: 1px solid #d0d0d0;
+}
+
+.arrow{
+	margin-top: 5px;
+	width: 5px;
+	height: 5px;
+	border:5px solid transparent;
+	border-top-color: #000000;
+}
+
+.below-hidden .arrow{
+	border-top-color: transparent;
+	border-left-color: #000000;
+}
+
+/*.module-tabs{
+	border-right: 1px solid #9A8F8F;
+}*/
+
+.module-tabs h2{
+	text-align: center;	
+}
+
+
+.modules {
+		padding: 0;
+
+}
+
+
+.modules li{
+	background-color: #9BB7C5;
+}
+
+.modules li:hover{
+	background-color: #74AAC5;
+}
+
+.module{
+	min-height: 60px;
+	position: relative;
+	list-style-type: none;
+	border-top: 1px solid #9A8F8F;
+
+}
+
+
+.module:first-of-type{
+	border-top: none;
+}
+
+
+.module:last-of-type{
+	margin-bottom: 0;
+}
+
+
+
+.sections{
+	list-style-type: none;
+	background-color: #ffffff;
+	padding-left: 0px;
+	border-top: 1px solid #9A8F8F;
+}
+
+.sections li{
+	padding: 10px;
+	padding-left: 30px;
+	background-color: inherit;
+}
+
+.module-name{
+	overflow: hidden;
+	position: relative;
+	padding: 15px 20px 15px 40px;
+	display: block;
+}
+
+.arrow{
+	position: absolute;
+	left: 20px;
+	top: 15px;
+}
+
+
+
+.sections li:hover, .sections .selected{
+	background-color: #D7E3E8;
+}
+
+.questions-all {
+	list-style-type: none;
+}
+
+.flagged-only li{
+	display: none;
+}
+
+.flagged-only .flagged{
+	display: block;
+}
+
+.checkbox{
+	width: 16px;
+    height: 16px;
+    border: 2px solid #000000;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.checkbox input {
+    display: none;
+}
+
+.checkbox span {
+	display: none;
+}
+
+.checkbox input:checked + span {
+	width: 100%;
+	height:100%;
+	background: url('thick.svg');
+	background-size: 100%;
+    display:block;
+    
+}
+
+.module-tabs{
+	margin: 0;
+	width: 50%;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	z-index: 100;
+	background-color: #000000;
+	display: none;
+	height: 100%
+}
+
+.module-tabs ol{
+	margin-top: 0;
+}
+
+
+main{
+	padding:0
+}
+
+.main-content{
+	border-radius: 0;
+	position: relative;
+}
+
+.main-content div{
+	margin-bottom: 0;
+}
+
+
+	#show-modules{
+		display: inline-block;
+	}
+
+
+	header .logo-container{
+		margin-left: 50px;
+	}
+
+.course-details{
+	display: none;
+}
+
+#show-modules{
+	position: fixed;
+	top:0;
+	width: 32px;
+	height: 28px;
+	border: none;
+	padding: 5px;
+	padding-left: 10px;
+	background-color: #9BB7C5;
+}
+
+#show-modules div{
+	width: 8px;
+	height: 8px;
+	border: 8px solid transparent;
+
+}
+
+#show-modules .arrow-inner{
+	top:-8px;
+	left: -11px;
+	border-left-color: #9BB7C5;
+}
+
+#show-modules .arrow-outer{
+	border-left-color: #000000;
+}
+
+
+
+@media only screen and (min-width: 768px){
+	.module-tabs{
+		display: block;
+		width: 25%;
+		position: relative;
+		background-color: inherit;
+	}
+
+	#show-modules{
+		display: none;
+	}
+	.questions{
+		float: left;
+	}
+
+	header.logo-container{
+		margin-left: 0;
+	}
+
+	.course-details{
+	display: block;
+}
+
+
+}

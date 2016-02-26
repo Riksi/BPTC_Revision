@@ -1,0 +1,58 @@
+{% extends 'courses\core.html' %}
+{% load staticfiles %}
+
+	{% block style %}
+	<!--link rel="stylesheet" href="{% static 'css/questions.css' %}"-->
+	{% endblock %}
+
+
+
+	{% block header_items %}
+
+
+	<!--a href =  '{% url 'welcome' %}' class = 'title-link'>
+		<div class = 'title header-active'>
+			 <h1>Beat BPTC Civil</h1>
+		</div>
+	</a-->
+	<nav class = 'col-7 col-m-7'>
+		<ul style>
+			<li><a href = '{% url 'welcome' %}'>HOME</a></li>
+			<li><a href = '#'>ABOUT</a></li>
+			<li><a href = '#'>CONTACT</a></li>
+			<li><a href = '#'>RESOURCES</a></li>
+		</ul>
+	</nav>
+	<!--div class = 'header-col'>
+		ABOUT
+	</div>
+	<div class = 'header-col'>
+		RESOURCES
+	</div>
+	<div class = 'header-col'>
+		CONTACT
+	</div-->
+	{% endblock %}
+
+
+	{% block menu %}
+	
+		<ul class = 'menu-content'>
+			{% if user.is_authenticated %}
+			<li class = 'menu-content mobile-menu-item menu-content user-name'>USER {% if user.id %} {{user.id}} {% else %} {{ user_id }}{% endif %}</li>
+			<li class = 'menu-content' ><a href = '{% url 'profile' %}'>Profile</a></li>
+			<li><a href = '{% url 'logout' %}'>Log out</a></li>
+			{% else %}
+			<li class = 'menu-content'><a href = '{% url 'register' %}'>Register</a></li>
+			<li class = 'menu-content'><a href = '{% url 'login' %}?next={% url 'profile' %}'>Login</a></li>
+			{% endif %}	
+		</ul>
+		<ul class = 'mobile-menu-item menu-content'>
+			<li class = 'menu-content'><a href = '{% url 'welcome' %}'>Home</a></li>
+			<li class = 'menu-content'><a href = '#'>About</a></li>
+			<li class = 'menu-content'><a href = '#'>Contact</a></li>
+			<li class = 'menu-content'><a href = '#'>Resources</a></li>
+
+		</ul>
+	
+	{% endblock %}

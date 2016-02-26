@@ -1,0 +1,37 @@
+{% extends 'courses\main_base.html' %}
+{% load staticfiles %}
+	{% block style2 %}
+		<!--link rel="stylesheet" href="{% static 'css/progress.css' %}"-->
+		<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+		<link rel="stylesheet" href="{% static 'css/logreg.css' %}">
+	{% endblock %}
+{% block content %}
+
+
+
+			<section class = 'profile-content main-content row logreg'>
+				<div class = 'profile'>
+					<h2>Log in</h2>
+
+					<form method = 'post'>
+						{% csrf_token %}
+						<ul>
+							<li class = 'row'>
+							<label>Email:</label>
+							<input type="text" name="uname">
+							</li>
+							<li class = 'row'>
+							<label>Password:</label>
+							<input type = 'password' name ='pword'>
+							</li>
+							{% if error %}
+							<span class = 'error'>{{error}}</span>
+							{% endif %}
+							<li class = 'change-pword row'><input type = 'submit' value = 'Log in'></li>
+						</ul>
+						<input type="hidden" name="next" value={{next}} />
+					</form>
+				</div>
+				<p> New user? <a href = {% url 'register' %}>Register</a><p>
+			</section>
+{% endblock %}

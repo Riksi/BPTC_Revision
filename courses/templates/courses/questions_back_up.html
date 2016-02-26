@@ -1,0 +1,124 @@
+<!--
+>Need to add some data for the following
+>>Course
+>>Module
+>>Section
+>>Questions
+
+>>Have not added data
+>>Don't know how to execute queries
+>>Have not added views
+>>Need to recall how to do the views
+>>Have not included urls
+
+
+>Figure out how to use range, len, etc.
+-->
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Questions</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" href="{% static 'css/questions.css' %}">
+	</head>
+	<body>
+	<div>
+		<header class = row>
+			<div class = 'col-2 col-m-2'>
+				LOGO
+			</div>
+			<div class = 'col-2 col-m-2 menu-item'>
+				{{course.name}}
+			</div>
+			<div class = 'col-2 col-m-2 menu-item'>
+				Progress
+			</div>
+			<div class = 'col-2 col-m-2 menu-item'>
+				Days
+			</div>
+			<div class = 'col-2 col-m-2 menu-item'>
+				Deadline
+			</div>
+			<div class = 'col-2 col-m-2 user-icon menu-item menu-button'>
+				USER {{user_id}}
+			</div>
+			<div class = 'mobile-menu-icon menu-button'>
+				---</br>
+				---</br>
+				---</br>
+			</div>
+		</header>
+			<div class = 'col-4 col-m-4 user-menu hidden'>
+				<ul>
+					<li class = 'mobile-menu-item'>USER {{user.id}}</li>
+					<li class = 'mobile-menu-item'>{{course.name}}</li>
+					<li class = 'mobile-menu-item'>Days</li>
+					<li class = 'mobile-menu-item'>Deadline</li>
+					<li>Settings</li>
+					<li>Progress</li>
+					<li>Logout</li>
+				</ul>
+			</div>
+		<main>
+			<section class = 'row'>
+				<div class = 'col-3 col-m-3'>
+				Modules
+					<ul class = 'modules'>
+					{% for module, section_set in sections %}
+						<li class = 'module' >
+							<span class = 'above show-module-{{module.module_no}}-sections 
+							{% if module != this_section.module %} below-hidden {% endif %}' 
+							id = '{{module.id}}'>
+								Module {{module.module_no}}
+								<span class = 'show-text'>></span> 
+								<span class = 'hide-text'>v</span> 
+							</span>
+							<ul id = 'module-{{module.module_no}}-sections' class = '{% if module != this_section.module %} hidden {% endif %}'>
+								{% for section in section_set %}
+								<a href = "{% url 'questions' user_id=user_id section_id=section.section.id %}">
+									<li> {{section.section.name}} 
+										<input type = 'checkbox' class = 'area-checkbox' 
+										id = {% url 'completed_api' user_id=user_id section_id=section.section.id %}
+										{% if section.completed %} checked {% endif %}>
+									</li>
+								</a>
+								{% endfor %}
+							</ul>
+						</li>
+					{% endfor %}
+					</ul>
+				</div>
+
+				<div class = 'col-9 col-m-9'>Questions
+					<ol>
+					{% for question in questions %}
+						<li>
+							<article>
+								<p> {{question.question}} </p>
+								<button class = 'above show-answer-{{question.id}} below-hidden'> 
+									<span class = 'show-text'>Show </span>
+									<span class = 'hide-text'>Hide </span>
+									answer
+								</button>
+								<p  id ='answer-{{question.id}}' class ='hidden'> {{question.answer}} </p>
+							</article>
+						</li>
+					{% endfor %}
+					</ol>
+				</div>
+			</section>
+		</main>
+		<footer>Footer</footer>
+	</div>
+	
+		
+	<script type="text/javascript" src = "{% static 'scripts/script.js' %}"></script>
+	<script type="text/javascript" src = "{% static 'scripts/questions.js' %}"></script>
+
+
+	</body>
+</html>

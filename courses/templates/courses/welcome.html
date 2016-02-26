@@ -1,0 +1,144 @@
+{% extends 'courses\main_base.html' %}
+{% load staticfiles %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+{% endblock %}
+
+	
+
+{% block content %}
+
+
+<section class = 'first-div row'>
+	<img src = "{% static 'css/gavel.svg' %}">
+	<h1> The Bar Exam Crash Course</h1>
+	<h3> All the resources you need to revise for the BPTC Civil and Criminal Litigation exams in a month </h3>
+	<a href = '{% url 'all_courses' %}'><button class='outline-button'> Find out more </button></a>
+	<a href = '{% url 'register' %}'><button class='outline-button'> £49 - Register Now </button></a>
+</section>
+
+<section class = 'second-div row'>
+	
+	<div class = 'col-6'>
+		<h2> <a href = '{% url 'all_courses' %}'>The Courses </a></h2>
+		<p>Students are required to pass in each part. Assessment will
+be such that a broad range of the syllabus is assessed and that any part of it may be
+assessed. No indication must be given to students as to which parts of the syllabus will or
+will not be assessed. Students must be given the opportunity to attempt, and receive
+feedback on, formative (mock) assessments so as to provide appropriate preparation for
+summative (final) assessments. It is for Providers to demonstrate how this requirement
+has been met.
+</p>
+		<a href = '{% url 'all_courses' %}'>
+			<button class='outline-button'>
+			 Details 
+			</button>
+		</a>
+		<a href = '{% url 'register' %}'><button class='outline-button'>
+		Register Now
+		</button></a>
+	</div>
+	<div class = 'col-6 image'>
+		<img src = "{% static 'css/law_book.svg' %}">
+	</div>
+
+
+</section>
+
+<section class = 'third-div row'>
+		<figure class = 'col-4 col-m-4'>
+			
+			<img src = "{% static 'css/white_book.svg' %}">
+			<figcaption>
+				<h5>Learn the law</h5>
+				Knowing the law inside out is key to passing. Learn quickly and effectively with our interactive course materials.
+			</figcaption>
+		</figure>
+
+		<figure class = 'col-4 col-m-4'>
+			<img src = "{% static 'css/quiz.svg' %}">
+			<figcaption>
+				<h5>Test yourself</h5>
+				You need to recall the material perfectly on exam day. Our tools will let you generate tests and target weak areas.
+			</figcaption>
+		</figure>
+
+		<figure class = 'col-4 col-m-4'>
+			<img src = "{% static 'css/progress.svg' %}">
+			<figcaption>
+				<h5>Record your progress</h5>
+				Keep track of what you have done and what you do. Flag areas you on which you need to focus.
+			</figcaption>
+		</figure>
+</section>
+
+<section class = 'fourth-div row'>
+	<h3> Questions? </h3>
+	<h5>Please contact us if you have any questions about the course and we will be more than happy to answer them.</h3>
+	<form class>
+		{% csrf_token %}
+		<div class = 'col-4 col-m-4'>
+			<label>Name:</label>
+			<input type = 'text'>
+		</div>
+		<div class = 'col-4 col-m-4'>
+			<label>Email:</label>
+			<input type = 'text'>
+		</div>
+		<div class = 'col-4 col-m-4'>
+			<label>Subject:</label>
+			<input type = 'text'>
+			
+		</div>
+		<div class = 'col-12 col-m-12'>
+			<label>Message:</label>
+			<textarea></textarea>
+		</div>
+		<input class = 'send-button' type = 'submit' value = 'Send' id = 'send'>
+	</form> 
+
+</section>
+
+	<!--p>Claimant’s notice where defence is that money claimed has been paid</p>
+	<p>15.10</p>
+	<p>(1) Where –</p>
+	<p>(a) the only claim (apart from a claim for costs and interest) is for a specified amount of money; and</p>
+	<p>(b) the defendant states in his defence that he has paid to the claimant the amount claimed,
+	the court will send notice to the claimant requiring him to state in writing whether he wishes the proceedings to continue.</p>
+	<p>(2) When the claimant responds, he must serve a copy of his response on the defendant.</p>
+	<p>(3) If the claimant fails to respond under this rule within 28 days after service of the court’s notice on him the claim shall be stayed(GL).</p>
+	<p>(4) Where a claim is stayed under this rule any party may apply for the stay(GL) to be lifted.
+	(If the claimant files notice under this rule that he wishes the proceedings to continue, the procedure which then follows is set out in Part 26)</p-->
+
+
+
+	{#% for course in courses %#}
+		<!--a href =  {#% url 'course_detail' course_id=course.id %#}>
+			<div>
+				<h2>{{course.name}}</h2>
+				<span> Starts {{course.start_date}}</span>
+				<span>Ends {{course.end_date}}</span>
+			</div>
+		</a-->
+	{#% endfor %#}
+
+	<!--p>This part of the course aims to provide students with a sound understanding and knowledge of
+the fundamental principles, key rules and core elements of civil litigation, and in particular:</p>
+<ul>
+<li>Allocation of business between the High Court and County Courts, the overriding objective</li>
+of the Civil Procedure Rules and the duty of the court to manage cases</li>
+<li>Limitation, pre-action conduct, and commencing proceedings</li>
+<li>Parties, statements of case, and claiming remedies in contract and tort</li>
+<li>Multiple causes of action, counterclaims and other additional claims</li>
+<li>Amendment and further information</li>
+<li>Default judgment and summary judgment</li>
+<li>Case management, sanctions and striking out</li>
+<li>Disclosure and inspection of documents</li>
+<li>Interim applications, interim payments, security for costs and interim injunctions</li>
+<li>Offers to Settle</li>
+<li>Evidence of fact and expert evidence</li>
+<li>Civil Trial and Evidence</li>
+<li>Judgments, Orders, Enforcement, Costs and Appeals</li> 
+</ul-->
+
+{% endblock %}

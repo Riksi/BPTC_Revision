@@ -1,0 +1,205 @@
+main{
+	padding: 0;
+}
+
+header{
+	width: 100%;
+}
+
+section:nth-of-type(odd){
+	background-color: #ffffff;
+}
+
+section:nth-of-type(even){
+	background-color: #9BB7C5;
+}
+
+
+
+section{
+	padding: 40px 20px;
+}
+
+.first-div, .second-div{
+	text-align: center;
+
+}
+
+.first-div h1{
+	font-size: 48px;
+	line-height: 100%;
+	margin: 20px auto;
+}
+
+.first-div h3{
+	font-weight: lighter;
+	font-size: 20px;
+	margin-top: 0;
+}
+
+
+main button{
+	background-color: #ffffff;
+	border: 2px solid #000000;
+	padding: 10px;
+	margin: 5px;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+.second-div{
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+
+.second-div h2{
+	font-size: 36px;
+	line-height: 36px;
+	margin-top: 0;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.second-div h2 a:hover{
+	opacity: 0.7;
+}
+
+.image{
+	padding: 20px;
+}
+
+
+
+img,figure img {
+	width: 50%;
+	height: 50%;
+}
+
+.image img{
+	margin-top: 60px;
+	width: 70%;
+	height: 70%;
+	max-width: 290px;
+}
+
+
+	.first-div img {
+	width: 35%;
+	height: 35%;
+}
+
+figcaption h5{
+	margin-top: 0;
+}
+
+.second-div div:nth-of-type(1){
+	padding: 0 25px;
+}
+
+.second-div p{
+	font-size: 16px;
+	letter-spacing: 1px;
+	text-align: left;
+	line-height: 175%;
+}
+
+.third-div {
+	text-align: center;
+}
+
+
+
+
+.fourth-div h3,h5{
+	text-align: center;
+
+}
+
+.fourth-div h3{
+	font-size: 36px;
+	line-height: 36px;
+}
+
+h5{
+	font-size: 18px;
+	line-height: 18px;
+}
+
+.fourth-div form div{
+	padding: 10px;
+}
+
+.fourth-div input, .fourth-div textarea{
+	border-radius: 10px;
+	width: 100%;
+	padding: 5px;
+	background-color: #ffffff;
+}
+
+.fourth-div input{
+	height: 40px;
+}
+
+.fourth-div label{
+	display: block;
+}
+
+.fourth-div textarea{
+	height: 160px;
+}
+
+figure{
+	margin: 0 auto;
+	padding: 10px 20px;
+}
+
+#send{
+	width: 100px;
+	float: right;
+	margin-right: 10px;
+	font-size: 18px;
+	background-color: #000033;
+	color: #ffffff;
+}
+
+
+@media only screen and (min-width: 768px){
+	section{
+		padding: 40px 150px;
+	}
+
+	.fourth-div{
+	padding: 40px 250px;
+		}
+
+	.first-div h1{
+		font-size: 64px;
+		line-height: 64px;
+	}
+
+	figure{
+		margin: 0;
+	}
+
+	.second-div h2{
+	font-size: 48px;
+	line-height: 48px;
+	}
+
+	.second-div p{
+		font-size: 18px;
+		font-weight: lighter;
+	}
+
+	.first-div img {
+	width: 25%;
+	height: 25%;
+}
+	.image img{
+	width: 60%;
+	height: 60%;
+	}
+}
+
+

@@ -1,0 +1,54 @@
+h2{
+	color: #d0d0d0;
+	text-align: center;
+	font-variant: small-caps;
+	
+}
+
+.course{
+	margin:20px auto 0;
+	border:1px solid #d0d0d0;
+	background-color:#ffffff;
+	padding: 15px 40px;
+	max-width: 600px;
+	    box-shadow: 2px 2px 2px #383434;
+	    border-radius: 2px;
+	}
+
+.course *{
+	background-color:transparent;
+}
+
+.course p{
+	margin: 3px;
+}
+
+
+.course h3{
+	margin-top: 0;
+}
+.course a{
+	color: #0000ff;
+	font-weight: bold;
+}
+
+.course h3 a{
+	color: #000000;
+	font-weight: bold;
+	
+}
+
+.course-link{
+	float: right;
+}
+
+
+
+p a:hover{
+	text-decoration: underline;
+}
+
+.course h3 a:hover{
+	opacity: 0.7;
+
+}

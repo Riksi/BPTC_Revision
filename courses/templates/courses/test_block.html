@@ -1,0 +1,15 @@
+{% extends 'courses/base.html' %}
+{% load staticfiles %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/questions.css' %}">
+<div> Link </div>
+{% endblock %}
+
+{% block content %}
+<div> Main content </div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src = "{% static 'scripts/questions.js' %}"></script>
+<div> Script </div>
+{% endblock %}

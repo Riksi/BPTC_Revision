@@ -1,0 +1,203 @@
+<!--
+>Need to add some data for the following
+>>Course
+>>Module
+>>Section
+>>Questions
+
+>>Have not added data
+>>Don't know how to execute queries
+>>Have not added views
+>>Need to recall how to do the views
+>>Have not included urls
+
+
+>Figure out how to use range, len, etc.
+-->
+{% extends 'courses/base.html' %}
+{% load staticfiles %}
+
+	{% block style2 %}
+	<link rel="stylesheet" href="{% static 'css/ques.css' %}">
+	{% endblock %}
+
+		{% block content %}
+		<button id = 'show-modules'>
+			<div class = 'arrow-outer'>
+				<div class = 'arrow-inner '></div>
+			</div>
+		</button>
+
+			<section class = 'main-content row'>
+				<div class = 'col-3 col-m-3 module-tabs'>
+				
+					<ol class = 'modules'>
+					{% for module, section_set in sections %}
+						<li class = 'row module above show-module-{{module.module_no}}-sections 
+							{% if not this_section or module != this_section.module %} below-hidden {% endif %}' 
+							id = '{{module.id}}' >
+								<div class = 'arrow'></div>
+								<!--span class = 'arrow show-text'>></span> 
+								<span class = 'arrow hide-text'>v</span--> 
+								<span class = 'module-name'>{{module.module_no}}. {{module.name}} </span>
+						</li>
+							<!--/span-->
+						<ul id = 'module-{{module.module_no}}-sections' 
+						class = 'sections {% if not this_section or module != this_section.module %} hidden {% endif %}'>
+							{% for section in section_set %}
+							<li {% if section.section == this_section %} class = 'selected' {% endif %}>
+								<label class = 'checkbox'>
+										<input type = 'checkbox' class = 'area-checkbox' 
+										id = {% url 'completed_api' section_id=section.section.id %}
+										{% if section.completed %} checked {% endif %}>
+									<span></span>
+								</label>
+								<a href = "{% url 'questions' course_id=course.id section_id=section.section.id %}">
+									 {{section.section.name}} 
+
+									
+								</a>
+							</li>
+							{% endfor %}
+						</ul>
+						
+					{% endfor %}
+
+
+
+						<li class = 'row module above show-module-test-sections 
+							{% if this_section != 'test' %} below-hidden {% endif %}' 
+							id = 'test' >
+								<div class = 'arrow'></div>
+								<!--span class = 'arrow show-text'>></span> 
+								<span class = 'arrow hide-text'>v</span--> 
+								<span class = 'module-name'>Test yourself</span>
+						</li>
+							<!--/span-->
+						<ul id = 'module-test-sections' 
+						class = 'sections {% if not this_section or module != this_section.module %} hidden {% endif %}'>
+				
+							<li {% if this_section == 'test'%} class = 'selected' {% endif %}>
+								<a href = '{% url 'test_yourself' course_id=course.id %}?module_no='>
+									 Test yourself
+								</a>
+							</li>
+
+						</ul>
+						
+
+
+
+					</ol>
+				</div>
+
+				<div class = 'col-9 questions'>
+
+					{% if this_section != 'test' and questions %}
+
+
+					<h6> {{this_section.module.module_no}} {{module.name}}  {{this_section.module.name}} > {{this_section.name}}</h6>
+					<!--div class = 'row'>
+						<button id = 'previous'> < </button>
+						<button id = 'next'> > </button> 
+					</div-->
+
+					<a href = '{% url 'test_yourself' course_id=course.id %}?module_no={{this_section.module.module_no}}'>
+						<button class = 'question-button'>
+							TEST
+						</button>
+					</a>
+
+					
+					<button id = 'show-flagged' class = 'below-hidden question-button'>
+						<span class = 'show-text'> FLAGGED </span>
+						<span class = 'hide-text'> ALL </span>
+					</button>
+
+
+					<h3>   Questions </h3>
+
+
+
+					{% elif  this_section != 'test' %}
+					<h6> {{course.name}} </h6>
+					<h3> Welcome </h3>
+
+					{% else %}
+					<h6> Test your knowledge {{area}}</h6>
+					<h4>Choose a module from the drop-down list or just click on 'New test' to test yourself with questions drawn from different topics. Alternatively strengthen your weakest areas - you can do this on a per-module basis by choosing a module, or across all modules.</h4>
+					{% endif %}	
+					{% if this_section == 'test' %}
+					<form>
+
+						<select name = 'module_no'>
+								<option value = ''> All modules </option>
+							{% for module, dummy_section in sections  %}
+								<option value = {{module.module_no}} 
+								{% if  module.module_no == this_module_no %}
+								selected 
+								{% endif %}}>
+									Module {{module.module_no}}
+								</option>
+							{% endfor %}	
+						</select>
+						<input type = 'submit' value = 'New test' class = 'question-button' id ='new-test'>
+						<input type = 'button' value = 'Strengthen weak areas' class = 'question-button' id = 'weak-areas'>
+						<!-- Note that weak areas is just for show right now -->
+					</form>
+					{% endif %}
+
+
+					{% if this_section %}
+						{% if questions %}
+						
+
+							<ol id  = 'question-list' {% if this_section != 'test' %} class = 'questions-all' {% endif %}  >
+							{% for question in questions %}
+								
+								<li id = 'question-{{question.id}}' class = 'question-list-item'>
+
+									<article>
+										{% if this_section != 'test' %}
+
+										<span class = 'flag' id = '{{question.id}}' onclick = 'postFunction(this)' onmouseover = 'changeColour(this)' onmouseout = 'changeColour(this)'>
+											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><g><path d="M37.1,47.7l-8.3-35.4c0,0,11.5-3.7,19.2,1.3s24.9-0.3,24.9-0.3L81,49.7c0,0-12.7,5-23.7,0S38.1,47.7,37.1,47.7z"/></g><g><path d="M36.4,89.7c-1.3,0-2.5-0.9-2.8-2.3l-16.5-74c-0.3-1.6,0.6-3.1,2.2-3.4s3.1,0.6,3.4,2.2l16.5,74c0.3,1.6-0.6,3.1-2.2,3.4   C36.8,89.7,36.6,89.7,36.4,89.7z"/></g><!--text x="0" y="115" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">Created by Matt Wilson</text><text x="0" y="120" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">from the Noun Project</text--></svg>
+										</span>
+
+
+
+										{% endif %}
+										<p> <!--span class = 'qn'></span--> {{question.question}} </p>
+
+
+
+										<button class = 'above show-answer-{{question.id}} below-hidden'> 
+											<span class = 'show-text'>Show </span>
+											<span class = 'hide-text'>Hide </span>
+											answer
+										</button>
+										<p  id ='answer-{{question.id}}' class ='hidden'> {{question.answer}} </p>
+									</article>
+								</li>
+							{% endfor %}
+							</ol>
+						{% endif %}
+					{% else %}
+						<p> Welcome to {{course.name}}. Click on the links on the left to access the course materials. </p>
+					{% endif %}
+				</div>
+
+
+			</section>
+			<form method = 'post' id = 'flag-question'>
+				<input type = 'hidden' id = 'csrf' value = {{csrf_token}}>
+				<input type = 'hidden' id = 'user_id' value = {{user.id}}>
+			</form>
+		{% endblock %}
+
+
+
+
+	{% block script %}
+	<script type="text/javascript" src = "{% static 'scripts/questions.js' %}"></script>
+	{% endblock %}

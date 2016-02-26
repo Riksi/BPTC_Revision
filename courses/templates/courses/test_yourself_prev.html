@@ -1,0 +1,96 @@
+{% extends 'courses/main_base.html' %}
+{% block content %}
+<form>
+	<select name = 'module_no'>
+			<option value = ''>Module</option>
+		{% for module in modules %}
+			<option value = {{module.module_no}} 
+			{% if  module.module_no == this_module_no %}
+			selected 
+			{% endif %}}>
+				Module {{module.module_no}}
+			</option>
+		{% endfor %}	
+	</select>
+	<select name = 'num_req'>
+		<option value = 10>Number of questions </option>
+		<option value = 5 {% if num_req == 5 %}
+		selected 
+		{% endif %} >5
+		</option>
+		<option value = 10 {% if num_req == 10 %}
+		selected 
+		{% endif %} >10
+		</option>
+	</select>
+	<!--input type = 'checkbox' name = 'weak_areas' 
+	{#% if weak_areas %#}
+	checked
+	{#% endif %#}-->
+	<input type = 'submit' value = 'New test'>
+</form>
+<section>
+	{% if questions %}
+	<ol>
+	{% for question in questions %}
+		<li>
+			<article>
+				<p> {{question.question}} </p>
+				<button class = 'above show-answer-{{question.id}} below-hidden'> 
+					<span class = 'show-text'>Show </span>
+					<span class = 'hide-text'>Hide </span>
+					answer
+				</button>
+				<p  id ='answer-{{question.id}}' class ='hidden'> {{question.answer}} </p>
+				<!-- class = 'rating' form = 'save-ratings' type ='radio' name = {{question.id}} value = '1'> Easy
+				<input class = 'rating' form = 'save-ratings' type ='radio' name = {{question.id}} value = '2'> Medium
+				<input class = 'rating' form = 'save-ratings' type ='radio' name = {{question.id}} value = '3'--> Difficult
+			</article>
+		</li>
+	{% endfor %}
+	</ol>
+	<form method = 'post' id = 'save-ratings'>
+		{% csrf_token %}
+		<input type = 'submit'></input>
+	</form>
+	<script type="text/javascript">
+	document.getElementById('save-ratings').addEventListener('submit',
+		function(e){
+			e.preventDefault();
+			postFunction();
+		})
+	</script>
+	{% endif %}
+
+	<script type="text/javascript">
+	function postFunction() {
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (xhttp.readyState == 4 && xhttp.status == 200) {
+		      console.log(xhttp.responseText);
+		    }
+		  };
+		  xhttp.open("POST", '{% url 'testpost' %}', true);
+		  var csrf = document.getElementsByTagName('input')[0].value;
+		  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		  xhttp.send(getPostData(['rating']));
+		  console.log('sent');
+		}
+
+	function getPostData(classNames,condition){
+		var postData = 'csrfmiddlewaretoken={{csrf_token}}'
+		classNames.forEach(function(cl){
+		var elems = document.getElementsByClassName(cl);
+		for(var i = 0; i < elems.length; i++){
+			var el = elems[i]
+			if(el.checked){
+				postData+='&'+ el.name + '=' + el.value;
+			}
+		};
+	});
+		return postData;
+	}
+
+	</script>
+</section>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'courses/main_base.html' %}
+
+{% block content %}
+<style type="text/css">
+
+.posts{
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+article,.posts{
+	border: 1px solid black;
+
+}
+
+article,form, .question-title{
+	background-color: #ffffff;
+}
+
+
+article,textarea, input, form, .question-title{
+	margin: 20px;
+	padding: 10px;
+}
+
+textarea{
+	width: 90%;
+	height: 100px;
+}
+
+input{
+	margin-right: 25px;
+	float: right;
+}
+</style>
+<section class = 'posts'>
+	<h2 class = 'question-title'>
+			Question title
+	</h2>
+	<article class = 'question'>
+
+		<p> Question content </p>
+		<span class = 'votes'>Votes</span>
+		<span class = 'asker'>Asker</span>
+		<span class = 'asked'>Date</span>
+		<button>Edit</button>
+		<button>Delete</button>
+		<button>Vote</button>
+	</article>
+	<article class = 'response'>
+		<p> Response content </p>
+		<span class = 'votes'>Votes</span>
+		<button>Vote</button>
+		<span class = 'responder'>Responder</span>
+		<span class = 'replied'>Date</span>
+	</article>
+	<article class = 'response'>
+		<p> Response content </p>
+		<span class = 'votes'>Votes</span>
+		<button>Vote</button>
+		<span class = 'responder'>Responder</span>
+		<span class = 'replied'>Date</span>
+	</article>
+	<form class = 'row'>
+		<h3> Add a response </h3>
+		<textarea>
+		</textarea>
+		<input type = 'submit' value = 'Post'></input>
+	</form>
+</section>
+{% endblock %}

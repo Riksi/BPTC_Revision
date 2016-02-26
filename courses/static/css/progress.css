@@ -1,0 +1,143 @@
+/*  	OVERALL 
+	CONTENT
+	PROGRESS-BARS
+	OTHER FEATURES
+	RESPONSIVE
+*/
+
+/* OVERALL */
+main{
+	padding: 10px 0;
+
+}
+
+section, section *{
+	background-color: #ffffff;
+}
+
+
+/***********/
+
+/* CONTENT */
+#progress-container{
+	width: 80%;
+	margin: 50px auto;
+	padding: 10px;
+
+}
+
+#progress-container h2{
+	margin: 20px 0;
+}
+
+#progress-container > .row{
+	border-bottom: 1px solid #D0D0D0;
+}
+
+#progress-container > .row:nth-of-type(1){
+	font-weight: bold;
+	background-color: #6C6CF7;
+	border-radius: 5px;
+}
+
+#progress-container > .row:nth-of-type(1) div{
+	background-color: transparent;
+}
+
+#progress-container > .row:last-of-type{
+	border: none;
+}
+
+.topic-name{
+	padding: 5px;
+}
+
+/***********/
+
+/* PROGRESS-BARS */
+
+.progress-bar-container{
+	padding: 0;
+	
+}
+
+.progress-bar-inner{
+	float: left;
+	width: 100%;
+	height: 10px;
+	background-color: #D0D0D0 !important; 
+	border-radius: 2px;
+	margin: 10px 0;
+
+}
+
+.topic-progress-bar{
+height: 100%;
+background-color: #000033 !important;  
+	border-radius: 2px;
+
+}
+/**********/
+
+/* OTHER FEATURES */
+
+.percent{
+	display: none;
+	height: 25px;
+	/*padding: 5px;*/
+	width: 19%;
+	float: right;
+	vertical-align: middle;
+	margin-top: 5px;
+	color: #000033;
+}
+
+.test-button{
+	float: left;
+	margin: 5px 0;
+	background-color: #00ff00;
+	border-radius: 5px;
+	border: none;
+	padding: 5px;
+	color: #ffffff;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.test-button:hover{
+	opacity: 0.7;
+}
+
+/*****************/
+
+
+/* RESPONSIVE */
+@media only screen and (min-width: 600px){
+.progress-bar-inner{
+	width: 79%;
+}
+
+.percent{
+	display: block;
+}
+
+}
+
+@media only screen and (min-width: 1024px){
+#progress-container{
+	width:50%;
+	min-width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.progress-bar-inner{
+	width: 83%;
+}
+
+.percent{
+	width: 15%;
+}
+
+}
+/****************/

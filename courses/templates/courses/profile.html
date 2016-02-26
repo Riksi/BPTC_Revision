@@ -1,0 +1,60 @@
+
+{% extends 'courses/main_base.html' %}
+{% load staticfiles %}
+	{% block style2 %}
+		<!--link rel="stylesheet" href="{% static 'css/progress.css' %}"-->
+		<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+	{% endblock %}
+		{% block content %}
+			<section class = 'profile-content main-content row'>
+				<div class = 'profile'>
+					<h2>Profile</h2>
+
+					<form method = 'post'>
+						{% csrf_token %}
+						<ul>
+							<li class = 'row'>
+							<label>E-mail:</label>
+							<input type = 'text' placeholder = {{user.username}}></li>
+							
+						</ul>
+					</form>
+					<h4>Change password</h4>
+					<form method = 'post'>
+						{% csrf_token %}
+						<ul>
+							<li class = 'row'>
+							<label>Present:</label>
+							<input type = 'password' name ='present-pword'>
+							</li>
+							<li class = 'row'>
+							<label>New:</label>
+							<input type = 'password' name ='new-pword'>
+							</li>
+							<li class = 'row'>
+							<label>Confirm:</label>
+							<input type = 'password' name ='confirm-pword'>
+							</li>
+							<span class = 'error'>{{error}}</span>
+							<li class = 'change-pword row'><input type = 'submit' value = 'Save changes'></li>
+						</ul>
+					</form>
+					<!--h3>My Courses</h3>
+						<div class = 'courses'>
+						{% for name,id,completed in course_data %}
+							<div class = "row">
+								<div class = 'col-6 col-m-6'>
+									<a href =  {% url 'questions' course_id=id section_id='' %}>{{name}}</a>
+								</div>
+								<div class = 'col-3 col-m-3' style='height:20px'>
+									<div style = 'background-color:#00ff00; width:{{completed}}%; height:100%'></div>
+								</div>
+								<a href = '{% url 'withdraw' course_id=id %}'><div class = 'col-3 col-m-3' id = {{id}}>Withdraw</div>
+							</div>
+						{% endfor %}
+						</div-->
+					</div>
+			</section>
+		{% endblock %}
+	{% block script %}
+	{% endblock %}

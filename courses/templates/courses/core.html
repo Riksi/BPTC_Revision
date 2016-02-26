@@ -1,0 +1,134 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Beat BPTC Civil</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+		<link rel="stylesheet" href="{% static 'css/core.css' %}">
+		<link rel="stylesheet" href="{% static 'css/auth_style.css' %}">
+		<link href='https://fonts.googleapis.com/css?family=Krona+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+		{% if user.is_authenticated %}
+		<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+		{% endif %}
+		{% block style %}
+		{% endblock %}
+		{% block style2 %}
+		{% endblock %}
+
+
+
+	</head>
+	<body>
+	<div class = 'container'>
+		<header class>
+
+
+
+
+			
+			<div class = 'header-inner row'>
+
+				<a href = '{% url 'welcome' %}'>
+					<div class = 'logo-container'>
+							 <span class = 'logo' > Beat </span>
+							 <span class = 'logo' > the </span>
+							 <span class = 'logo' > Bar </span>
+					</div>
+				</a>
+	
+			{% block header_items %}
+			{% endblock %}
+
+			{% if user.is_authenticated %}
+			<div class = 'user-icon-container col-2 col-m-2 menu-button'>
+				<img src = "{% static 'css/student.svg' %}">
+
+					<div class = 'arrow-outer'>
+						<div class = 'arrow-inner '></div>
+						<div class = 'arrow-below user-menu-elem hidden'></div>
+					</div>
+	
+			</div>
+			{% else %}
+			<a href = '{% url 'register' %}'>
+				
+					<button class = 'outline-button menu-item'> Register </button>
+
+			</a>
+			<a href = '{% url 'login' %}?next={% url 'profile' %}'>
+
+				
+					<button class = 'outline-button menu-item login-button'> Log in </button>
+			
+			</a>
+			{% endif %}
+
+
+				<div class = 'mobile-menu-icon menu-button'>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
+
+
+
+
+		</header>
+
+			<div class = 'col-2 col-m-2 user-menu user-menu-elem hidden'>
+			<!--{% if not user.is_authenticated %} mobile-only {% endif %}'-->
+			{% block menu %}
+			{% endblock %}
+			</div>	
+
+
+		<main>
+			{% block content %}
+			{% endblock %}
+		</main>
+
+		<footer>
+			<div class = 'footer-inner row'>
+					<div class = 'col-2 col-m-2'>
+						<a href = '{% url 'welcome' %}'>
+							<div class = 'logo-container'>
+									 <span class = 'logo' > Beat </span>
+									 <span class = 'logo' > the </span>
+									 <span class = 'logo' > Bar </span>
+							</div>
+						</a>
+					</div>
+				<nav class = 'col-10 col-m-10'>
+					<ul style>
+						<li><a href = '{% url 'welcome' %}'>HOME</a></li>
+						<li><a href>ABOUT</a></li>
+						<li><a href>CONTACT</a></li>
+						<li><a href>RESOURCES</a></li>
+						{% if not user.is_authenticated %}
+						<li><a href = '{% url 'register' %}'>REGISTER</a></li>
+						{% endif %}
+
+					</ul>
+				</nav>
+			</div>
+
+
+
+			
+
+
+		</footer>
+
+		{% block script %}
+		{% endblock %}
+		
+			
+	<script type="text/javascript" src = "{% static 'scripts/script.js' %}"></script>
+	</div>
+
+	</body>
+</html>

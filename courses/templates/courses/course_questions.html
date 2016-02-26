@@ -1,0 +1,40 @@
+
+<div class = 'col-9 col-m-9 '>
+
+	{% if this_section %}
+		{% if questions %}
+		Questions
+		<button id = 'show-flagged' class = 'below-hidden'>
+			Show 
+			<span class = 'show-text'> flagged </span>
+			<span class = 'hide-text'> all </span>
+			questions
+		</button>
+
+
+			<ul id  = 'question-list' >
+			{% for question in questions %}
+				<li id = 'question-{{question.id}}'>
+					<article>
+						<p> {{question.question}} </p>
+						<input type = 'button' form = 'flag-question' class = 'flag' id = '{{question.id}}' value = 1>
+						<button class = 'above show-answer-{{question.id}} below-hidden'> 
+							<span class = 'show-text'>Show </span>
+							<span class = 'hide-text'>Hide </span>
+							answer
+						</button>
+						<p  id ='answer-{{question.id}}' class ='hidden'> {{question.answer}} </p>
+					</article>
+				</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	{% else %}
+		<p> Welcome to {{course.name}}. Click on the links on the left to access the course materials. </p>
+	{% endif %}
+</div>
+</section>
+<form method = 'post' id = 'flag-question'>
+<input type = 'hidden' id = 'csrf' value = {{csrf_token}}>
+<input type = 'hidden' id = 'user_id' value = {{user.id}}>
+</form>

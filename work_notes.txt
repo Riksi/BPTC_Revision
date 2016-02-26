@@ -1,0 +1,16 @@
+The Python elements:
+#Withdraw link in profile page
+#Change password functionality
+#Deadline
+#Days
+
+Later:
+#Facebook, Google, etc. login
+
+
+Additional:
+#Forum
+#Post page
+#List of questions page
+#Question detail page 
+#Your answer(same as for post)

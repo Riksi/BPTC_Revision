@@ -1,0 +1,36 @@
+Have a question? Can you answer one? Register or login to post your questions and 
+answers.
+
+Forum should be a separate application
+
+Create:
+>Form with title, text box, options to select course module and section
+>Option to add tags
+>Preview section
+
+Edit:
+>Same as create page except that post content is displayed
+>Form action is to update database rather than create a new entry
+
+Delete:
+
+List of questions:
+>Displays questions from newest first
+>Displays tags underneath each question
+
+Question detail page:
+>Displays questions
+	>Title
+	>Asker
+	>Content
+	>Date 
+	(>Edited date)
+	>Tags
+>Replies
+	>Same as above
+>Post an answer --- only available for logged in users - otherwise
+alternative button
+	>Same as question form
+
+Both the list and details pages should have 'Ask' button which should 
+redirect to register or login if not logged in 

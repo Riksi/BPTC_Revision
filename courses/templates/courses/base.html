@@ -1,0 +1,33 @@
+{% extends 'courses/core.html' %}
+{% load staticfiles %}
+
+	{% block style %}
+	<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+	{% endblock %}
+
+
+
+	{% block header_items %}
+	<div class = 'col-4 col-m-4 course-details'>
+		<a href =  '{% url 'questions' course_id=course.id section_id='' %}' class = 'title-link'>
+		 	<h4>{{course.name}}</h4>
+		</a>
+	</div>
+	<div class = 'col-4 col-m-4 course-details'>
+		<h4 class = 'time'>Exam: {{course.end_date|date:"l j F Y" }}</h4>
+	</div>
+	{% endblock %}
+
+	{% block menu %}
+
+		
+			<ul class ='user-menu-list menu-content'>
+				<li class = 'mobile-menu-item menu-content user-name'>USER {% if user.id %} {{user.id}} {% else %} {{ user_id }}{% endif %}</li>
+				<li class = 'mobile-menu-item menu-content course-name'><a href =  {% url 'questions' course_id=course.id section_id='' %}>{{course.name}}</a></li>
+				
+				<li class = 'menu-content'><a href = '{% url 'profile' %}'>Profile</a></li>
+				<li class = 'menu-content'><a href = '{% url 'progress' course_id=course.id %}'>Progress</a></li>
+				<li class = 'menu-content'><a href = '{% url 'logout' %}'>Logout</a></li>
+			</ul>
+
+	{% endblock %}

@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Questions</title>
+		<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	</head>
+	<body>
+	<div>
+		<header class = row>
+			<div class = 'col-2 col-m-2'>
+				LOGO
+			</div>
+			<div class = 'col-2 col-m-2 user-icon'>
+				USER
+			</div>
+		</header>
+		<main>
+			<section class = 'row'>
+				<h1>Profile for User {{user.id}} </h1>
+				<form>
+					E-mail
+					<input type = 'text' placeholder = {{user.username}}>
+					<h3>Password</h3>
+					Present
+					<input type = 'password'>
+					New
+					<input type = 'password'>
+					Confirm
+					<input type = 'password'>
+					<h3>My Courses</h3>
+					{% for name,id,completed in course_data %}
+						<div class = "row">
+							<div class = 'col-6 col-m-6'>{{name}}</div>
+							<div class = 'col-3 col-m-3'>{{completed}}%</div>
+							<div class = 'col-3 col-m-3' id = {{id}}>Withdraw</div>
+						<div>
+					{% endfor %}
+				</form>
+			</section>
+		</main>
+		<footer>Footer</footer>
+	</div>
+	
+	</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'courses/main_base.html' %}
+{% load staticfiles %}
+
+{% block style2 %}
+<link rel="stylesheet" href="{% static 'css/course.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+<h2> Courses </h2>
+	{% for course,enrolled in course_data %}
+	<div class = 'course row'>
+		<h3><a href =  {% url 'questions' course_id=course.id section_id='' %}>{{course.name}}</a></h3>
+		<p >{{course.description}}</p>
+		<p class = 'time'> <span class = 'time-label'>Starts: </span>{{course.start_date|date:"l j F Y" }}</p>
+		<p class = 'time'><span class = 'time-label'>Ends: </span>{{course.end_date|date:"l j F Y" }}</p>
+		{% if enrolled %}
+		<p class = 'course-link'><a href =  {% url 'questions' course_id=course.id section_id='' %}>Go to course</a></p>
+		{% else %}
+		<p class = 'course-link'><a href =  {% url 'join' course_id=course.id %}>Join</a><p>
+		{% endif %}
+	</div>
+	{% endfor %}
+{% endblock %}w

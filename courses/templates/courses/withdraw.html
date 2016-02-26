@@ -1,0 +1,11 @@
+{% extends 'courses\main_base.html' %}
+
+{% block content %}
+<form method = 'post'>
+	{% csrf_token %}
+	Are you sure you want to withdraw from this course?
+	All your course records will be deleted and you can't undo this step.
+	<input type = 'submit' value = 'Yes'> </input>
+	<input type = 'submit' value = 'No' formaction = {% url 'profile' %} formmethod = 'GET'> </input>
+</form>
+{% endblock %}

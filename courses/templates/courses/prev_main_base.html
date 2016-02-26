@@ -1,0 +1,97 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Welcome</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="{% static 'css/grid.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+		{% block style %}
+		{% endblock %}
+
+	</head>
+	<body>
+	<div class = 'container'>
+		<header class = row>
+			<div class = 'header-inner row'>
+				<a href = '{% url 'welcome' %}'>
+					<div class = 'logo header-active'>
+						<svg class = 'logo-image' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 72 90" enable-background="new 0 0 72 72" xml:space="preserve"><g><path fill="#000000" d="M71.3,32.9L61,11.9c-0.1-0.2,0.1-0.5,0.3-0.5h1.8c1,0,1.8-0.9,1.6-1.9c-0.1-0.8-0.9-1.4-1.7-1.4H38.5   c-0.6,0-1.1-0.5-1.1-1.1V2.9c0-0.8-0.6-1.6-1.4-1.7c-1-0.2-1.9,0.6-1.9,1.6v4.3c0,0.6-0.5,1.1-1.1,1.1h-4.5H8.9H8.5   c-0.8,0-1.6,0.6-1.7,1.4c-0.2,1,0.6,1.9,1.6,1.9h0.4h1.8c0.3,0,0.4,0.3,0.3,0.5L0.7,32.9c-0.2,0.5-0.2,1,0,1.4   c0.4,6.8,6.1,12.2,13,12.2c6.9,0,12.6-5.4,13-12.2c0.2-0.4,0.2-0.9,0-1.4L16.3,11.9c-0.1-0.2,0.1-0.5,0.3-0.5h12h4.5   c0.6,0,1.1,0.5,1.1,1.1v43.8c0,0.6-0.5,1.2-1.2,1.2h-4.4c-1.4,0-2.5,1.1-2.5,2.5v1.5c0,0.7-0.6,1.3-1.3,1.3H12   c-0.7,0-1.3,0.6-1.3,1.3v5.5c0,0.7,0.6,1.3,1.3,1.3h48c0.7,0,1.3-0.6,1.3-1.3v-5.5c0-0.7-0.6-1.3-1.3-1.3H46.8   c-0.7,0-1.3-0.6-1.3-1.3V60c0-1.4-1.1-2.5-2.5-2.5h-4.4c-0.6,0-1.2-0.5-1.2-1.2V12.5c0-0.6,0.5-1.1,1.1-1.1h16.9   c0.3,0,0.4,0.3,0.3,0.5L45.4,32.9c-0.2,0.5-0.2,1,0,1.4c0.4,6.8,6.1,12.2,13,12.2c6.9,0,12.6-5.4,13-12.2   C71.5,33.8,71.6,33.3,71.3,32.9z M12,32.6c0,0.4-0.4,0.8-0.8,0.8H5.3c-0.6,0-1-0.6-0.7-1.1l6.8-13.9c0.1-0.3,0.6-0.2,0.6,0.1V32.6z    M22.7,32.3c0.3,0.5-0.1,1.1-0.7,1.1h-5.9c-0.4,0-0.8-0.4-0.8-0.8V18.5c0-0.3,0.4-0.4,0.6-0.1L22.7,32.3z M56.7,32.6   c0,0.4-0.4,0.8-0.8,0.8H50c-0.6,0-1-0.6-0.7-1.1l6.8-13.9c0.1-0.3,0.6-0.2,0.6,0.1V32.6z M66.7,33.4h-5.9c-0.4,0-0.8-0.4-0.8-0.8   V18.5c0-0.3,0.4-0.4,0.6-0.1l6.8,13.9C67.7,32.8,67.3,33.4,66.7,33.4z"/></g>
+
+							<!--text x="0" y="87" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">Created by Creative Stall</text><text x="0" y="92" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">from the Noun Project</text--></svg>
+
+					</div>
+				</a>
+
+			<a href =  '{% url 'welcome' %}' >
+				<div class = 'title header-active'>
+					 <h1>BPTC Revision</h1>
+				</div>
+			</a>
+
+
+			{% if user.is_authenticated %}
+			<div class = 'user-icon menu-button header-active'>
+				
+				<svg class = 'user-icon-image' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 500 625" enable-background="new 0 0 500 500" xml:space="preserve"><g><g><path d="M137.941,126.069c0,61.892,50.171,112.059,112.063,112.059c61.885,0,112.055-50.167,112.055-112.059    c0-61.887-50.17-112.061-112.055-112.061C188.112,14.008,137.941,64.182,137.941,126.069z"/></g></g><g><g><g><path d="M228,457h-1v-30h-41.854l38.08-106.537c-54.873-3.6-95.899-18.027-95.899-35.274c0-0.782-0.014-1.557,0.152-2.326     C98.043,304.848,79,340.182,79,379.932V479c1-0.162,1.372,0,2.04,0H421v-99.068c0-39.123-19.114-73.969-48.304-96.021     c0.05,0.424,0.03,0.85,0.03,1.277c0,17.249-41.053,31.677-95.93,35.275L314.854,427H272v30H228"/></g></g></g><text x="0" y="515" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">Created by Gimhani Perera</text><text x="0" y="520" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">from the Noun Project</text></svg>
+			</div>
+			<div class = 'user-name menu-item menu-button header-active'>
+				<h4>Username {% if user.id %} {{user.id}} {% else %} {{ user_id }}{% endif %}</h4>
+				v
+			</div>
+			{% else %}
+			<div class = 'register menu-item header-active'>
+				<a href = '{% url 'register' %}'>Register</a>
+			</div>
+			<div class = 'login menu-item header-active'>
+				<a href = '{% url 'login' %}?next={% url 'profile' %}'>Login</a>
+			</div>
+			{% endif %}
+
+			</div>
+		</header>
+
+			<div class = 'col-2 col-m-2 user-menu hidden'>
+				<ul class = 'user-menu-list'>
+					{% if user.is_authenticated %}
+					<li class = 'mobile-menu-item'>USER {% if user.id %} {{user.id}} {% else %} {{ user_id }}{% endif %}</li>
+					<li><a href = '{% url 'profile' %}'>Profile</a></li>
+					<li><a href = '{% url 'logout' %}'>Logout</a></li>
+					{% else %}
+					<li><a href = '{% url 'register' %}'>Register</a></li>
+					<li><a href = '{% url 'login' %}?next={% url 'profile' %}'>Login</a></li>
+					{% endif %}	
+				</ul>
+			</div>
+
+
+
+		<main>
+			{% block content %}
+			{% endblock %}
+		</main>
+
+		<footer class = 'row'>			
+
+
+			<a href = '{% url 'welcome' %}'>
+				<div class = 'col-2 col-m-2 logo'>
+					LOGO
+				</div>
+			</a>
+
+
+		</footer>
+
+		{% block script %}
+		{% endblock %}
+		
+			
+	<script type="text/javascript" src = "{% static 'scripts/script.js' %}"></script>
+	</div>
+
+
+	</body>
+</html>
